@@ -65,16 +65,13 @@ export default function Home() {
                   />
                 </div>
                 <span className={`text-2xl font-bold font-display transition-colors ${scrolled ? 'text-slate-800' : 'text-white'}`}>
-                  Delta<span className="text-white">Gene</span>
+                  Delta<span className={scrolled ? 'text-purple-600' : 'text-white'}>Gene</span>
                 </span>
               </div>
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="#about" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>About</a>
-              <a href="#services" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Services</a>
-              <a href="#technology" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Technology</a>
-              <a href="#contact" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Contact</a>
+              {/* Menu items hidden on landing page - shown on get-started page */}
             </div>
 
             <div className="flex items-center gap-4">
@@ -505,7 +502,7 @@ export default function Home() {
           {/* Modal Content */}
           <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden animate-scale-in">
             {/* Modal Header */}
-            <div className="bg-gradient-to-r from-slate-700 to-slate-900 p-6">
+            <div className="bg-gradient-to-r from-purple-600 to-purple-800 p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-2xl font-bold text-white">Our Laboratory Technology</h3>
@@ -532,7 +529,7 @@ export default function Home() {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 text-white flex items-center justify-center text-2xl flex-shrink-0">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-purple-800 text-white flex items-center justify-center text-2xl flex-shrink-0">
                         {tech.icon}
                       </div>
                       <div>
@@ -568,7 +565,7 @@ export default function Home() {
             <div className="p-6 bg-slate-50 border-t border-slate-200 flex justify-center">
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="px-8 py-3 bg-slate-700 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors"
+                className="px-8 py-3 bg-purple-600 text-white font-semibold rounded-xl hover:bg-purple-700 transition-colors"
               >
                 Close
               </button>

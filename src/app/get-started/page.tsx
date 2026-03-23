@@ -61,6 +61,7 @@ const services = [
 
 export default function GetStarted() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState<'inquiry' | 'appointment'>('inquiry')
   const [formData, setFormData] = useState({
     name: '',
@@ -228,19 +229,46 @@ export default function GetStarted() {
             </div>
             
             <div className="hidden md:flex items-center gap-8">
-              <a href="/" className={`font-medium transition-colors hover:text-purple-400 ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Home</a>
-              <a href="#services" className={`font-medium transition-colors hover:text-purple-400 ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Services</a>
-              <a href="#technology" className={`font-medium transition-colors hover:text-purple-400 ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Technology</a>
-              <a href="#contact" className={`font-medium transition-colors hover:text-purple-400 ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Contact</a>
+              <a href="/" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Home</a>
+              <a href="#services" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Services</a>
+              <a href="#technology" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Technology</a>
+              <a href="#contact" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Contact</a>
             </div>
 
             <div className="flex items-center gap-4">
-              <button className={`px-5 py-2.5 rounded-full font-semibold transition-all hover:shadow-lg ${scrolled ? 'bg-purple-600 text-white hover:bg-purple-700' : 'bg-white text-slate-800 hover:bg-gray-100'}`}>
+              <button className={`px-5 py-2.5 rounded-full font-semibold transition-all hover:shadow-lg ${scrolled ? 'bg-white text-slate-800 hover:bg-gray-100' : 'bg-white text-slate-800 hover:bg-gray-100'}`}>
                 Order Your Kit
+              </button>
+              {/* Mobile Menu Button */}
+              <button 
+                className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <svg className={`w-6 h-6 ${scrolled ? 'text-slate-800' : 'text-white'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {mobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
               </button>
             </div>
           </div>
         </div>
+        {/* Mobile Menu Dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200 shadow-lg">
+            <div className="px-4 py-4 space-y-3">
+              <a href="/" className="block py-2 text-slate-700 font-medium hover:text-purple-600">Home</a>
+              <a href="#services" className="block py-2 text-slate-700 font-medium hover:text-purple-600">Services</a>
+              <a href="#technology" className="block py-2 text-slate-700 font-medium hover:text-purple-600">Technology</a>
+              <a href="#contact" className="block py-2 text-slate-700 font-medium hover:text-purple-600">Contact</a>
+              <button className="w-full mt-4 px-5 py-2.5 rounded-full bg-purple-600 text-white font-semibold">
+                Order Your Kit
+              </button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section - Dark Purple Background */}
@@ -752,6 +780,60 @@ export default function GetStarted() {
           )}
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-[#1a0a20] py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-2 mb-4">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/30 shadow-lg bg-white/10 backdrop-blur-sm">
+                  <img 
+                    src="/logo.jpg" 
+                    alt="DeltaGene Logo" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span className="text-2xl font-bold font-display text-white">
+                  Delta<span className="text-white">Gene</span>
+                </span>
+              </div>
+              <p className="text-slate-400 max-w-md">
+                DeltaGene delivers comprehensive medical laboratory services with cutting-edge technology. Your health data is secure with us — we prioritize privacy and accuracy in every test.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                {['About Us', 'Services', 'Technology', 'Pricing', 'FAQ'].map((link) => (
+                  <li key={link}>
+                    <a href="#" className="text-slate-400 hover:text-white transition-colors">{link}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-slate-400">
+                <li>services.deltaGene@gmail.com</li>
+                <li>+233 (020) 319 7001</li>
+                <li>Mon-Fri: 9AM - 6PM GMT</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-slate-500 text-sm">© 2024 DeltaGene. All rights reserved.</p>
+            <div className="flex gap-6">
+              {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((link) => (
+                <a key={link} href="#" className="text-slate-500 hover:text-white text-sm transition-colors">{link}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   )
 }
