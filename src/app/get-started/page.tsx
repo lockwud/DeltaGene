@@ -232,7 +232,6 @@ export default function GetStarted() {
               <a href="/" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Home</a>
               <a href="#services" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Services</a>
               <a href="#technology" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Technology</a>
-              <a href="#contact" className={`font-medium transition-colors hover:text-white ${scrolled ? 'text-slate-600' : 'text-white/90'}`}>Contact</a>
             </div>
 
             <div className="flex items-center gap-4">
@@ -496,6 +495,27 @@ export default function GetStarted() {
                         </div>
                       </div>
 
+                      {/* Preferred Communication Method */}
+                      <div>
+                        <label className="block text-slate-700 mb-2 font-medium">
+                          Preferred Communication Method
+                        </label>
+                        <div className="grid grid-cols-3 gap-3">
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="commMethod" value="phone" className="text-purple-600" defaultChecked />
+                            <span className="text-sm">📞 Phone</span>
+                          </label>
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="commMethod" value="whatsapp" className="text-purple-600" />
+                            <span className="text-sm">💬 WhatsApp</span>
+                          </label>
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="commMethod" value="email" className="text-purple-600" />
+                            <span className="text-sm">✉️ Email</span>
+                          </label>
+                        </div>
+                      </div>
+
                       <div>
                         <label htmlFor="service" className="block text-slate-700 mb-2 font-medium">
                           Service Interested In
@@ -638,6 +658,27 @@ export default function GetStarted() {
                             className="w-full px-4 py-3 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
                             placeholder="+233 50 123 4567"
                           />
+                        </div>
+                      </div>
+
+                      {/* Preferred Communication Method */}
+                      <div>
+                        <label className="block text-slate-700 mb-2 font-medium">
+                          Preferred Communication Method
+                        </label>
+                        <div className="grid grid-cols-3 gap-3">
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="apptCommMethod" value="phone" className="text-purple-600" defaultChecked />
+                            <span className="text-sm">📞 Phone</span>
+                          </label>
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="apptCommMethod" value="whatsapp" className="text-purple-600" />
+                            <span className="text-sm">💬 WhatsApp</span>
+                          </label>
+                          <label className="flex items-center gap-2 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-purple-50 transition-colors">
+                            <input type="radio" name="apptCommMethod" value="email" className="text-purple-600" />
+                            <span className="text-sm">✉️ Email</span>
+                          </label>
                         </div>
                       </div>
 
