@@ -105,7 +105,7 @@ export default function Home() {
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-display text-white mb-6 leading-tight">
             Unlock Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-200 via-white to-gray-200 animate-shimmer">
               Health Potential
@@ -413,8 +413,8 @@ export default function Home() {
               </button>
               
               {/* Animated pulse indicator */}
-              <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-slate-600 rounded-full animate-pulse"></div>
-              <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-slate-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-slate-600 rounded-full animate-pulse"></div>
+              <div className="hidden lg:block absolute -right-8 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-slate-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
             </div>
           </div>
         </div>

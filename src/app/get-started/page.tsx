@@ -461,7 +461,7 @@ export default function GetStarted() {
                         />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="email" className="block text-slate-700 mb-2 font-medium">
                             Email *
@@ -627,7 +627,7 @@ export default function GetStarted() {
                         />
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="appt-email" className="block text-slate-700 mb-2 font-medium">
                             Email *
@@ -705,7 +705,7 @@ export default function GetStarted() {
                         </select>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label htmlFor="appt-date" className="block text-slate-700 mb-2 font-medium">
                             Preferred Date *
