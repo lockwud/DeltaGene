@@ -320,7 +320,7 @@ function ServiceCard({ service, onMore, icon }: ServiceCardProps) {
         <h3 className="text-2xl md:text-3xl font-bold text-blue-800 text-left w-full">{service.title}</h3>
       </div>
       <ul className="list-disc pl-6 md:pl-8 text-lg md:text-xl text-gray-700 space-y-3 w-full">
-        {visibleItems.map((item, idx) => (
+        {visibleItems.map((item: string, idx: number) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
@@ -337,10 +337,14 @@ function ServiceCard({ service, onMore, icon }: ServiceCardProps) {
 }
 
 // Modal for full service details
-function ServiceModal({ service, onClose }) {
-  const modalRef = useRef();
+type ServiceModalProps = {
+  service: { title: string; items: string[] };
+  onClose: () => void;
+};
+function ServiceModal({ service, onClose }: ServiceModalProps) {
+  const modalRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    function handleKey(e) {
+    function handleKey(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
     window.addEventListener("keydown", handleKey);
@@ -358,7 +362,7 @@ function ServiceModal({ service, onClose }) {
         </button>
         <h3 className="text-2xl md:text-3xl font-bold text-blue-800 mb-6 text-center w-full">{service.title}</h3>
         <ul className="list-disc pl-6 text-base md:text-lg text-gray-700 space-y-2 mb-8 w-full">
-          {service.items.map((item, idx) => (
+          {service.items.map((item: string, idx: number) => (
             <li key={idx}>{item}</li>
           ))}
         </ul>
