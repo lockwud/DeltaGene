@@ -314,19 +314,19 @@ function ServiceCard({ service, onMore, icon }: ServiceCardProps) {
   }
 
   return (
-    <div className="relative group bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-10 flex flex-col items-start min-h-[400px] min-w-[320px] md:min-w-[380px] max-w-full overflow-hidden border border-blue-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-lime-400">
-      <div className="flex items-center gap-4 mb-4">
+    <div className="relative group bg-white/70 backdrop-blur-lg rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 flex flex-col items-start min-h-[320px] min-w-[200px] sm:min-w-[260px] md:min-w-[380px] max-w-full overflow-hidden border border-blue-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-lime-400">
+      <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
         <span>{icon}</span>
-        <h3 className="text-2xl md:text-3xl font-bold text-blue-800 text-left w-full">{service.title}</h3>
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-800 text-left w-full">{service.title}</h3>
       </div>
-      <ul className="list-disc pl-6 md:pl-8 text-lg md:text-xl text-gray-700 space-y-3 w-full">
+      <ul className="list-disc pl-4 sm:pl-6 md:pl-8 text-base sm:text-lg md:text-xl text-gray-700 space-y-2 sm:space-y-3 w-full">
         {visibleItems.map((item: string, idx: number) => (
           <li key={idx}>{item}</li>
         ))}
       </ul>
       {hasMore && (
         <button
-          className="absolute bottom-4 right-6 text-xs md:text-sm text-white font-semibold bg-lime-500 hover:bg-lime-600 transition-all px-3 py-1.5 rounded-lg shadow animate-pulse focus:outline-none focus:ring-2 focus:ring-lime-300"
+          className="absolute bottom-3 right-4 text-xs sm:text-sm text-white font-semibold bg-lime-500 hover:bg-lime-600 transition-all px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg shadow animate-pulse focus:outline-none focus:ring-2 focus:ring-lime-300"
           onClick={onMore}
         >
           more
