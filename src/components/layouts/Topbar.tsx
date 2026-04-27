@@ -1,0 +1,195 @@
+'use client';
+
+import React, { useEffect, useRef, useState } from 'react';
+import NotificationsPanel from '@/components/ui/NotificationsPanel';
+import { COLORS } from '@/lib/colors';
+
+type Props = {
+  onToggleSidebar: () => void;
+};
+
+const ToggleIcon: React.FC<{ className?: string }> = ({ className }) => (
+  <svg
+    className={className}
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="none"
+    aria-hidden
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect x="2" y="3" width="20" height="18" rx="2" stroke="currentColor" strokeWidth="1.6" />
+    <path d="M9 12L7 10L9 8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    <line x1="12" y1="3" x2="12" y2="21" stroke="currentColor" strokeWidth="1.2" opacity="0.05" />
+  </svg>
+);
+
+const Topbar: React.FC<Props> = ({ onToggleSidebar }) => {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
+  const [userOpen, setUserOpen] = useState(false);
+  const [notifOpen, setNotifOpen] = useState(false);
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const activeBg = (COLORS && (COLORS.activeBg ?? COLORS.primary)) || '#2563EB';
+
+  useEffect(() => {
+    if (searchOpen && inputRef.current) inputRef.current.focus();
+  }, [searchOpen]);
+
+  useEffect(() => {
+    function onDocClick(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+        setUserOpen(false);
+        setNotifOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', onDocClick);
+    return () => document.removeEventListener('mousedown', onDocClick);
+  }, []);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Search for', query);
+    // wire search navigation or API here
+  };
+
+  return (
+    <>
+      <div className="h-14 bg-white flex items-center px-4 md:px-6 justify-between shadow-sm">
+        {/* Left: custom toggle icon */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={onToggleSidebar}
+            aria-label="Toggle sidebar"
+            className="p-1 rounded hover:bg-gray-100"
+            type="button"
+          >
+            <ToggleIcon className="text-gray-700" />
+          </button>
+        </div>
+
+        {/* filler */}
+        <div className="flex-1" />
+
+        {/* Right controls (search, theme, notifications, user) */}
+        <div className="flex items-center gap-2" ref={containerRef}>
+          {/* Inline expanding search (placed first as requested) */}
+          <div className="relative">
+            <form onSubmit={onSubmit} className="flex items-center">
+              <div
+                onClick={() => {
+                  setSearchOpen((s) => !s);
+                  setUserOpen(false);
+                  setNotifOpen(false);
+                }}
+                className={`flex items-center gap-2 bg-gray-50 border rounded-xl px-2 py-1 transition-all duration-200 shadow-sm cursor-text ${searchOpen ? 'w-52' : 'w-10'}`}
+                style={{ alignItems: 'center' }}
+              >
+                <span className="material-icons text-gray-600 text-xs">search</span>
+                <input
+                  ref={inputRef}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search patients, orders..."
+                  className={`bg-transparent outline-none text-sm transition-all duration-200 ${searchOpen ? 'opacity-100 w-full' : 'opacity-0 w-0'}`}
+                  aria-label="Search"
+                />
+              </div>
+            </form>
+          </div>
+
+          {/* Theme toggle (moved after search) */}
+          <button
+            className="p-1 rounded hover:bg-gray-100"
+            title="Toggle theme"
+            type="button"
+          >
+            <span className="material-icons text-xs">brightness_6</span>
+          </button>
+
+          {/* Notifications - opens the NotificationsPanel */}
+          <button
+            onClick={() => {
+              setNotifOpen(true);
+              setUserOpen(false);
+              setSearchOpen(false);
+            }}
+            className="p-1 rounded hover:bg-gray-100"
+            title="Notifications"
+            aria-haspopup="dialog"
+            aria-expanded={notifOpen}
+            type="button"
+          >
+            <span className="material-icons text-xs">notifications</span>
+          </button>
+
+          {/* User initials (white circle with blue text) */}
+          <div className="relative">
+            <button
+              onClick={() => {
+                setUserOpen((s) => !s);
+                setSearchOpen(false);
+                setNotifOpen(false);
+              }}
+              className="w-8 h-8 bg-white text-sm flex items-center justify-center rounded-full border"
+              title="Account"
+              aria-haspopup="true"
+              type="button"
+              style={{ color: activeBg, borderColor: '#e6e9f2', fontWeight: 600 }}
+            >
+              <span className="text-sm">HK</span>
+            </button>
+
+            {userOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg z-40 border">
+                <div className="p-3">
+                  <p className="font-semibold text-sm">Hope Kweku AbeiKu</p>
+                  <p className="text-xs text-gray-500">Laboratory Manager</p>
+                  <p className="text-xs text-gray-500 mt-1">priscilla@example.com</p>
+                </div>
+
+                <div className="border-t">
+                  <button
+                    onClick={() => console.log('go to profile')}
+                    className="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-50 text-sm"
+                    type="button"
+                  >
+                    <span className="material-icons text-sm text-gray-600">account_circle</span>
+                    <span>Profile</span>
+                  </button>
+
+                  <button
+                    onClick={() => console.log('change password')}
+                    className="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-50 text-sm"
+                    type="button"
+                  >
+                    <span className="material-icons text-sm text-gray-600">vpn_key</span>
+                    <span>Change Password</span>
+                  </button>
+
+                  <button
+                    onClick={() => console.log('logout')}
+                    className="w-full flex items-center gap-2 px-4 py-2 hover:bg-gray-50 text-sm"
+                    type="button"
+                  >
+                    <span className="material-icons text-sm text-gray-600">logout</span>
+                    <span>Logout</span>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Notifications panel mounted at top-level of this component. It's position:fixed so it covers/blurs the app. */}
+      <NotificationsPanel open={notifOpen} onClose={() => setNotifOpen(false)} width="w-64" />
+    </>
+  );
+};
+
+export default Topbar;
