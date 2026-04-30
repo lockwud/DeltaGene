@@ -15,7 +15,7 @@ type DashboardItem = {
 const sections: { items: DashboardItem[] }[] = [
   {
     items: [
-      { id: 'hr', label: 'HR', path: '/dashboards/hr', icon: 'person_add', description: 'Staffing & training' },
+      { id: 'hr', label: 'HR', path: '/system/dashboard/hr', icon: 'person_add', description: 'Staffing & training' },
       { id: 'qc', label: 'QC', path: '/dashboards/qc', icon: 'science', description: 'Quality control metrics' },
       { id: 'qa', label: 'QA', path: '/dashboards/qa', icon: 'fact_check', description: 'Quality assurance events' },
       { id: 'warehouse', label: 'Warehouse', path: '/dashboards/warehouse', icon: 'inventory_2', description: 'Stock & storage KPIs' },

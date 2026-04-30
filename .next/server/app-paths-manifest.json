@@ -1,1 +1,6 @@
-{}
+{
+  "/system/settings/page": "app/system/settings/page.js",
+  "/system/patients/page": "app/system/patients/page.js",
+  "/system/cpoe/page": "app/system/cpoe/page.js",
+  "/system/cpoe/queue/page": "app/system/cpoe/queue/page.js"
+}

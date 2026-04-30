@@ -19,20 +19,20 @@ const sidebarSections: { title?: string; items: MenuItem[] }[] = [
     title: 'DASHBOARDS',
     items: [
       { label: 'Overview', path: '/system/dashboard', icon: 'dashboard', collapsible: false },
-      { label: 'HR', path: '/dashboards/hr', icon: 'person_add', collapsible: false },
-      { label: 'QC', path: '/dashboards/qc', icon: 'science', collapsible: false },
-      { label: 'QA', path: '/dashboards/qa', icon: 'fact_check', collapsible: false },
-      { label: 'Warehouse', path: '/dashboards/warehouse', icon: 'inventory_2', collapsible: false },
-      { label: 'Finance', path: '/dashboards/finance', icon: 'payment', collapsible: false },
+      { label: 'HR', path: '/system/dashboard/hr', icon: 'person_add', collapsible: false },
+      { label: 'QC', path: '/system/dashboard/qc', icon: 'science', collapsible: false },
+      { label: 'QA', path: '/system/dashboard/qa', icon: 'fact_check', collapsible: false },
+      { label: 'Warehouse', path: '/system/dashboard/warehouse', icon: 'inventory_2', collapsible: false },
+      { label: 'Finance', path: '/system/dashboard/finance', icon: 'payment', collapsible: false },
     ],
   },
 
   {
     title: 'PATIENT & ORDERS',
     items: [
-      { label: 'Patient', path: '/patients', icon: 'groups', collapsible: false },
-      { label: 'Test Ordering (CPOE)', path: '/orders', icon: 'playlist_add_check', collapsible: false },
-      { label: 'Order Queue', path: '/orders/queue', icon: 'receipt_long', collapsible: false },
+      { label: 'Patient', path: '/system/patients', icon: 'groups', collapsible: false },
+      { label: 'Test Ordering (CPOE)', path: '/system/cpoe', icon: 'playlist_add_check', collapsible: false },
+      { label: 'Order Queue', path: '/system/cpoe/queue', icon: 'receipt_long', collapsible: false },
     ],
   },
 
